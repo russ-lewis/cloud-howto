@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Cloud Services - HOW TOs - AWS CLI - S3</title>
+  </head>
+
+<body>
+
+
+
+<p><b><font size="+2">Common Commands for the AWS CLI - S3</font></b>
+
+<p>Updated: 6 Dec 2019
+
+<p>
+<b>What you need:</b>
+<br><ul>
+      <li> The AWS CLI </li>
+      <li> One or more buckets in S3 </li>
+    </ul>
+
+<hr>
+
+<div style="width:500">
+
+<p>
+The AWS CLI is a useful tool for accessing AWS cloud services.  As a general
+rule, it can do anything that you can do through the Console (the web-based
+GUI) - sometimes more!  It is useful for scripting - and of course, it's
+faster (once you've learned it) than working with a GUI.
+
+<p>
+To use the CLI, you must first set it up with credentials, so that AWS knows
+who you are.  If you haven't set this up yet, check out my instructions on the
+<a href="../index.html">Cloud HowTOs</a> page.
+
+<hr>
+
+<p>
+The simplest command for AWS is ls, which lists files and directories.  To see
+the list of all of your buckets, do:
+  <pre>aws s3 ls
+  </pre>
+
+<p>
+To see the files and directories inside a bucket, do:
+  <pre>aws s3 ls s3://BUCKET_NAME
+  </pre>
+
+<p>
+To see the files inside a directory, do (the trailing slash is important):
+  <pre>aws s3 ls s3://BUCKET_NAME/DIR_1/DIR_2/
+  </pre>
+
+<hr>
+
+<p>
+To upload a file to S3, from your local machine, do:
+  <pre>aws s3 cp LOCAL_FILE_NAME s3://BUCKET_NAME/FILE_NAME
+  </pre>
+
+<p>
+Of course, you can place the file inside a directory:
+  <pre>aws s3 cp LOCAL_FILE_NAME s3://BUCKET_NAME/DIR/FILE_NAME
+  </pre>
+
+<p>
+If you skip the file name, then it will have the same name as the local file:
+  <pre>aws s3 cp LOCAL_FILE_NAME s3://BUCKET_NAME/DIR/
+  </pre>
+
+<p>
+To download a file, simply reverse the arguments:
+  <pre>aws s3 cp s3://BUCKET_NAME/FILE_NAME LOCAL_FILE_NAME_OR_DIRECTORY
+  </pre>
+
+<hr>
+
+<p>
+You can use - as the local file name, in either uploads or downloads, to
+read or write a pipe.  The following command works the same as UNIX's cat
+command:
+  <pre>aws s3 cp s3://BUCKET_NAME/FILE_NAME -
+  </pre>
+
+<p>
+And this command allows you to capture output from a command, just like
+the > redirection operator in a shell:
+  <pre>aws s3 cp - s3://BUCKET_NAME/DESTINATION_FILE_NAME
+  </pre>
+
+<hr>
+
+<p>
+Of course, you can also delete files from the command line:
+  <pre>aws s3 rm s3://BUCKET_NAME/FILE_NAME
+  </pre>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+</body>
+</html>
+

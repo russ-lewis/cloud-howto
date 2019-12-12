@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <title>Cloud Services - HOW TOs - AWS Educate - Setting Up the AWS CLI</title>
+  </head>
+
+<body>
+
+
+
+<p><b><font size="+2">Setting up the AWS CLI, Using an AWS Educate Account</font></b>
+
+<p>Updated: 6 Dec 2019
+
+<p>
+<b>What you need:</b>
+<br><ul>
+      <li> An AWS Educate Starter Account </li>
+      <li> A machine where the CLI is installed
+           <br><ul>
+                 <li> EC2 instances have this installed by default </li>
+                 <li> or, read the instructions here: <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html</a> </li>
+               </ul> </li>
+    </ul>
+
+<p>
+<b>What you can do:</b>
+<br><ul>
+      <li> Set up the AWS CLI </li>
+    </ul>
+
+<p>
+
+<b><font color=red>Limitations:</font></b>
+<br><ul>
+      <li> This process sets you up with a limited-time token; after a day or
+           two, it will no longer work and you will have to repeat the
+           process. </li>
+    </ul>
+
+<hr>
+
+<div style="width:500">
+
+<p>
+The AWS CLI is a useful tool for accessing AWS cloud services.  As a general
+rule, it can do anything that you can do through the Console (the web-based
+GUI) - sometimes more!  It is useful for scripting - and of course, it's
+faster (once you've learned it) than working with a GUI.
+
+<p>
+To use the CLI, you must first set it up with credentials, so that AWS knows
+who you are.  If you are using a full AWS account, this process takes several
+steps (Google for details if you need it).  But Vocareum has provided you with
+a handy tool, which makes it pretty easy.
+
+<p>
+First, log out of your AWS Educate account (including logging out from the
+Console if you are currently logged in).  Then, log in again:
+
+<p><img src="img/aws_educate_login.png" border=1>
+
+<p>
+Once you're logged in, look for the Account Details button:
+
+<p><img src="img/aws_educate_account_details_button.png" border=1>
+
+<p>
+When you click on it, you'll see some information about your account.  Click
+on the AWS CLI Show button:
+
+<p><img src="img/aws_educate_cli_details_buttonShow.png" border=1>
+
+<p>
+Which will show you your CLI login details.
+
+<p>
+<b>NOTE:</b> Use these details soon; they change if you come back later.  (My
+guess is that they are generated when you click this button, but expire if you
+don't activate them soon.)
+
+<p><img src="img/aws_educate_cli_details.png" border=1>
+
+<p>
+To configure the CLI, log into your EC2 instance.  First, make the .aws
+directory:
+  <pre>mkdir ~/.aws
+  </pre>
+
+<p>
+Then, open up the credentials file (use your favorite editor).  Copy the
+information that you collected above; paste it into the file.  Don't forget
+to include the [default] block!
+
+  <pre>vi ~/.aws/credentials
+  </pre>
+
+<p>
+Finally, give your AWS CLI a try!  Do you have some S3 buckets defined?  If
+so, then you should be able to do
+
+  <pre>aws s3 ls
+  </pre>
+
+and see each of your buckets.  Have fun!
+
+</div>
+
+
+
+</body>
+</html>
+
