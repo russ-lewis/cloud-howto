@@ -1,12 +1,103 @@
 <html>
   <head>
-    <title>Cloud HowTo - A Respository of Quick </title>
+    <title>Cloud HowTo - A Respository of Quick Info About Cloud Services </title>
   </head>
 
 <body>
 
 
 
+<p>
+The following table is not authoritative - services are not 100% comparable to
+each other.  However, I've tried to provide information about similar
+services - as much as I know.
+
+<p>
+<table border=2>
+  <tr>
+    <td></td>    <!-- first column is operation/service category -->
+    <td><b>AWS</b> <br><a target="_blank" href="https://console.aws.amazon.com">https://console.aws.amazon.com</a> </td>
+    <td><b>Gcloud</b> <br><a target="_blank" href="https://console.cloud.google.com">https://console.cloud.google.com</a> </td>
+    <td valign=top><b>Self-Hosted</b></td>
+<!--
+    <td><b>Azure</b></td>
+    <td><b>Linode</b></td>
+    <td><b>Digital Ocean</b></td>
+  -->
+  </tr>
+
+  <tr>
+    <td colspan=4> &nbsp; </td>
+  </tr>
+
+  <tr>
+    <td align=center><b>CLI</b></td>
+    <td><a href="aws/cli/">aws CLI</a></td>
+    <td><a href="gcloud/cli/">gcloud CLI</a></td>
+    <td>n/a</td>
+  </tr>
+
+  <tr>
+    <td align=center><b>Script APIs</b></td>
+    <td><a href="aws/boto3/">boto3 (Python)</a> <br>TODO: Node <a href="https://aws.amazon.com/sdk-for-javascript/">AWS documentation</a> <a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-started-nodejs.html">more</a></td>
+    <td> TODO: Python <a href="https://cloud.google.com/python/docs/reference">Google documentation</a> <br>TODO: Node <a href="https://cloud.google.com/nodejs/docs/reference">Google documentation</a> </td>
+    <td>n/a</td>
+  </tr>
+
+  <tr>
+    <td colspan=4> &nbsp; </td>
+  </tr>
+
+  <tr>
+    <td align=center><b>VMs</b></td>
+    <td><a href="aws/ec2/">EC2</a></td>
+    <td><a href="gcloud/compute/">Compute Engine</a></td>
+    <td>n/a</td>
+  </tr>
+
+  <tr>
+    <td align=center><b>Docker</b></td>
+    <td>TODO</td>
+    <td><a href="gcloud/compute/docker.html">Docker on Compute VMs</a></td>
+    <td><a href="self-hosted/docker/">Docker</a></td>
+  </tr>
+
+  <tr>
+    <td colspan=4> &nbsp; </td>
+  </tr>
+
+  <tr>
+    <td align=center><b>SQL</b></td>
+    <td><a href="aws/rds/">RDS</a></td>
+    <td><a href="gcloud/sql/">SQL</a></td>
+    <td><a href="self-hosted/sql/">MySQL in Docker</a></td>
+  </tr>
+
+  <tr>
+    <td align=center><b>redis / In-Memory Database</b></td>
+    <td>TODO <a href="https://aws.amazon.com/free/database/?trk=ps_a134p000007CdBSAA0&trkCampaign=acq_paid_search_brand&sc_channel=PS&sc_campaign=acquisition_US&sc_publisher=Google&sc_category=Database&sc_country=US&sc_geo=NAMER&sc_outcome=acq&sc_detail=aws%20redis&sc_content=Redis_e&sc_matchtype=e&sc_segment=548665196562&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Database|Solution|US|EN|Text&s_kwcid=AL!4422!3!548665196562!e!!g!!aws%20redis&ef_id=Cj0KCQiA2sqOBhCGARIsAPuPK0j6rlUGwK14c-GOqLIGu8sBTl0k18weAWqfrNbSFB8Mk5WakXWIUwgaAhVWEALw_wcB:G:s&s_kwcid=AL!4422!3!548665196562!e!!g!!aws%20redis">AWS documentation</a> </td>
+    <td><a href="gcloud/redis/">Cloud Memorystore Redis</a></td>
+    <td><a href="self-hosted/redis/">Redis</a></td>
+  </tr>
+
+  <tr>
+    <td colspan=4> &nbsp; </td>
+  </tr>
+
+  <tr>
+    <td align=center><b>File / Blob Storage</b></td>
+    <td><a href="aws/s3/">S3</a></td>
+    <td><a href="gcloud/storage/">Cloud Storage</a></td>
+    <td>n/a</td>
+  </tr>
+</table>
+
+
+
+<hr>
+<p><b><font size="+2">Misc Info</font></b>
+
+<p>
 <a name="aws_cli">
 
 <p><b>Setting up the AWS CLI</b>

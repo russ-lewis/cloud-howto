@@ -1,0 +1,17 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+service: cloud-howto
+
+env_variables:
+  AUTO_INDEX_ROOT: "html/"    # see auto_index.py for explanation
+
+handlers:
+- url: (/.*)?/
+  script: auto_index.app                  # see also AUTO_INDEX_ROOT
+
+- url: /
+  static_dir: html/
+  application_readable: true
+
