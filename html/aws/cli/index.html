@@ -148,6 +148,22 @@ For VMs (such as GCE) or Docker, see the OS-specific instructions above.
 
 
 
+<p><h3>Docker Image</h3>
+
+<p>
+Amazon provides a Docker image, which has the <font class=ms>aws</font> tool
+pre-installed.  Unlike Google <font class=ms>gcloud</font>, which gives you a
+shell (so you can set up configuration, and then run multiple commands), this
+Docker runs the <font class=ms>aws</font> command directly.  This means that
+you must use a "bind mount" (<a href="https://docs.docker.com/storage/bind-mounts/">https://docs.docker.com/storage/bind-mounts/</a>)
+to map the <font class=ms>~/.aws/</font> directory on the host machine, into
+the container.
+
+<p>
+You can find documentation for the container here: <a href="https://hub.docker.com/r/amazon/aws-cli">https://hub.docker.com/r/amazon/aws-cli</a>
+
+
+
 <p><h3>Other</h3>
 
 <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">hlttps://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html</a>

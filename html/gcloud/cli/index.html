@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <title>Cloud Services - HOW TOs - Google Cloud CLI</title>
+    <link rel="stylesheet" href="../../css/common.css">
+  </head>
+
+<body>
+
+
+
+<p><h1>Intro to the Google Cloud CLI</h1>
+
+<p>
+<b>Google Cloud CLI Documentation:</b> <a href="https://cloud.google.com/sdk/gcloud">https://cloud.google.com/sdk/gcloud</a>
+
+<p>
+The Google Cloud CLI (<font class=ms>gcloud</font>) is used for accessing
+many Google Cloud services.  (In some cases, you use another command name,
+but generally they are all installed as part of the <font class=ms>gcloud</font>
+package, so you don't have to install each one in turn.)
+
+<p>
+As with the AWS CLI, I recommend that you start by using the online Console,
+but that you come back to learn the CLI once you have picked up the basics of
+each service.
+<br><a target="_blank" href="https://console.cloud.google.com/">https://console.cloud.google.com/</a>
+
+
+
+<p><h2>Overview</h2>
+<p>
+Most Google Cloud CLI commands are of the following form:
+  <pre>
+    gcloud SERVICE NOUN VERB [ARGS]</pre>
+although a few are simpler:
+  <pre>
+    gcloud SERVICE      VERB [ARGS]</pre>
+
+<p>
+For example:
+  <pre>
+    gcloud app versions list </pre>
+will list all of the Google App Engine versions you have installed.  (In GAE, a
+"version" is a copy of the entire code for an app, that you uploaded at some
+point in time; a single version can be installed on zero, one, or many
+instances.  Old versions are kept around (although not served to users) until
+explicitly deleted.)
+
+<p>
+Similarly:
+  <pre>
+    gcloud compute instance delete --zone us-west1-b foo</pre>
+will delete (that is, shut down and destroy the hard drive of) the instance
+<font class=ms>foo</font> inside the zone <font class=ms>us-west1-b</font>,
+while
+  <pre>
+    gcloud compute ssh foo</pre>
+will ssh to the instance <font class=ms>foo</font> (without any need to load
+ssh keys onto your local machine).
+
+<p>
+This document will focus on how to install and configure the CLI; for details
+about the specific commands for various servicds, read the pages in those
+specific services:
+
+<p>
+    GAE: <a href="../gae/cli.html">/gcloud/gae/cli.html</a>
+<br>Compute: <a href="../compute/cli.html">/gcloud/compute/cli.html</a>
+<br>SQL: <a href="../sql/cli.html">/gcloud/sql/cli.html</a>
+
+
+
+<hr>
+
+<p><h2>Installing the CLI</h2>
+
+<p><h3>Google Compute</h3>
+
+<p>
+If you've read my description of the AWS CLI, you will know that AWS installs
+the <font class=ms>aws</font> tool on its standard images.  Similarly, Google
+appears to install <font class=ms>gcloud</font> on its VM images.
+Unsurprisingly, neither installs their competitor's CLI.  So if you need to
+access one service's CLI from VMs hosted by the other, you will have to
+install it yourself.
+
+<p>
+TODO: investigate if gcloud has a similar feature to the Instance Roles in AWS.  (Probably, it does.)
+
+
+
+<p><h3>Other</h3>
+
+<p>
+As far as I can tell, the Google Cloud SDK (which is what contains
+<font class=ms>gcloud</font> and the other CLI tools) is not available in the
+standard package managers in any of the OSes I use.  You can add Google
+repository to your list of valid repositories - and then install the package
+that way - or you can download the package file, and install it by hand.  (In
+fact, you even have the option of extracting a tarball into your home
+directory, if you want to run <font class=ms>gcloud</font> on a machine that
+you don't control!
+
+<p>
+<a href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a>
+
+
+
+<p><h3>Docker Image</h3>
+
+<p>
+Google provides a Docker image, which has <font class=ms>gcloud</font>
+pre-installed.  Just boot it up, run <font class=ms>gcloud&nbsp;init</font>,
+and you're off to the races!
+
+<p>
+    <b><font color=red>WARNING WARNING WARNING</font></b>
+<br><font class=ms>gcloud&nbsp;init</font> installs credentials on your
+    container.  If you save this container into a new image, do not share it
+    with anyone else!
+
+<p>
+Accoring to the documentation, the correct Docker image is hosted on Google
+Container Registry, here:
+  <pre>
+    gcr.io/google.com/cloudsdktool/cloud-sdk</pre>
+However, Docker Hub also contains the (verified) container
+  <pre>
+    google/cloud-sdk</pre>
+At time of writing, these two images have the same hash, so you can use either
+one to download the image.
+
+<p>
+    Google Documentation: <a href="https://cloud.google.com/sdk/docs/downloads-docker">https://cloud.google.com/sdk/docs/downloads-docker</a>
+<br>Docker Hub: <a href="https://hub.docker.com/r/google/cloud-sdk">https://hub.docker.com/r/google/cloud-sdk</a>
+
+
+
+<hr>
+
+<p><h2>Configuring the CLI</h2></p>
+
+To configure <font class=ms>gcloud</font> first install it (see above), and
+then run
+  <pre>
+    gcloud init</pre>
+The tool will walk you through an interesting and fairly straightforward
+process: it will give you a link which you copy into your browser; you log in
+there (and do some OAuth permission-giving), an it gives you a key to copy back
+into the tool.  Answer a couple config questions, and viola!  Your machine is
+configured to use <font class=ms>gcloud</font>.
+
+
+
+</body>
+</html>
+
