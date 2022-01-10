@@ -92,7 +92,7 @@ you <i>intend</i> to share with the untrusted user...
 
 
 
-<p><h3><font class=ms>ubuntu, debian</font></font></h3>
+<p><h3><font class=ms>ubuntu, debian</font></h3>
 
 Ubuntu is a variant of Debian, so the same install commands work for both:
 
@@ -113,7 +113,7 @@ Ubuntu is a variant of Debian, so the same install commands work for both:
 
 
 
-<p><h3><font class=ms>alpine</font></font></h3>
+<p><h3><font class=ms>alpine</font></h3>
 
 <pre>
   apk update
@@ -122,7 +122,20 @@ Ubuntu is a variant of Debian, so the same install commands work for both:
 
 <p>NOTE:
 <br>This works on the <font class=ms>alpine</font> container, but I've never
-    tested an <font class=ms>alpine</font> VM.  I would guess that a
+    tested it on an <font class=ms>alpine</font> VM.  I would guess that a
+    <font class=ms>sudo</font> prefix might be required on a VM.
+
+
+
+<p><h3><font class=ms>fedora</font></h3>
+
+<pre>
+  yum install awscli
+</pre>
+
+<p>NOTE:
+<br>This works on the <font class=ms>fedora</font> container, but I've never
+    tested it on a <font class=ms>fedora</font> VM.  I would guess that a
     <font class=ms>sudo</font> prefix might be required on a VM.
 
 
