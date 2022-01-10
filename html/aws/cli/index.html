@@ -1,0 +1,154 @@
+<html>
+  <head>
+    <title>Cloud Services - HOW TOs - AWS CLI</title>
+    <link rel="stylesheet" href="../../css/common.css">
+  </head>
+
+<body>
+
+
+
+<p><h1>Intro to the AWS CLI</h1>
+
+<p>
+<b>AWS Documentation:</b> <a href="https://docs.aws.amazon.com/cli/index.html">https://docs.aws.amazon.com/cli/index.html</a>
+
+<p>
+The AWS CLI allows you to interact with various (all?) AWS services at the
+command line, making it useful both for both scripting and quick use by
+experts.  However, as with most CLIs, it's a little intimidating at first;
+I recommend that AWS newbies use the Console at first:
+<a target="_blank" href="https://console.aws.amazon.com">https://console.aws.amazon.com</a>)
+
+
+
+<p><h2>Overview</h2>
+<p>
+Most AWS CLI commands are of the following form:
+  <pre>
+    aws SERVICE OPERATION ARGS</pre>
+
+<p>
+For example:
+  <pre>
+    aws ec2 describe-instances </pre>
+will give you detailed information about all currently running EC2 instances,
+and
+  <pre>
+    aws s3 cp foo.txt s3://my-bucket-name/a/b/c/</pre>
+copies the file foo.txt, from the local machine, into an S3 bucket.
+
+<p>
+This document will focus on how to install and configure the CLI; for details
+about the specific commands for various servicds, read the pages in those
+specific services:
+
+<p>
+    EC2: <a href="../ec2/cli.html">/aws/ec2/cli.html</a>
+<br>S3: <a href="../s3/cli.html">/aws/s3/cli.html</a>
+
+
+
+<hr>
+
+<p><h2>Installing the CLI</h2>
+
+<p><h3>EC2</h3>
+
+<p>
+Amazon-provided AMIs (that is, EC2 machine images) typically have <font class=ms>aws</font>
+pre-installed.  However, they do not generally have credentials installed; see
+below for information about how to install your credentials onto the machine.
+
+<p>
+However, EC2 instances have a special power: they can be assigned Roles.  When
+you create an instance, you can assign an IAM Role to the instance.  Then, when
+you use the <font class=ms>aws</font> cli (even without configuring it), you
+can perform whatever actions are allowed by that role.
+
+<p>
+I do <b>not</b> know exactly how this works, but based on my preliminary
+investigations, it seems like some variant of the following occurs:
+  <ul>
+    <li> The CLI queries the <a href="../ec2/instance_metadata.html">instance metadata</a>
+         to find out what role is assigned to this EC2 instance.
+      <ul>
+        <li>TODO: how?  Perhaps using <font class=ms>http://169.254.169.254/latest/meta-data/iam/security-credentials/</font> ? </li>
+        <li>TODO: can multiple roles be assigned to one instance - I think maybe so? </li>
+      </ul>
+    <li> The CLI queries the instance metadata, at <font class=ms>http://169.254.169.254/latest/meta-data/iam/security-credentials</font>, to get the credentials for that role </li>
+    <li> The CLI provides those credentials, while it accesses the Amazon REST API, to perform some action </li>
+  </ul>
+
+<p>
+<b><font color=red>WARNING WARNING WARNING</font></b>
+<br>
+If I understand things correctly, an assigned Role for an EC2 instance
+applies to <b>any HTTP request</b> coming from the instance.  This means that
+it is <b>not safe</b> to assign a Role to an instance if you plan to allow
+untrusted users (or untrusted software) to run on the instance.  Unless, of
+course, the Role actually represents some sort of delegated authority that
+you <i>intend</i> to share with the untrusted user...
+
+
+
+<p><h3><font class=ms>ubuntu, debian</font></font></h3>
+
+Ubuntu is a variant of Debian, so the same install commands work for both:
+
+<pre>
+  sudo apt-get update
+  sudo apt-get install awscli
+</pre>
+
+<p>NOTE 1:
+<br>The <font class=ms>sudo</font> prefix is not required if running inside a
+    container.
+
+<p>NOTE 2:
+<br>Note that the <font class=ms>update</font> may not be needed, depending on
+    whether or not you are in a container, and also whether or not you have
+    recently updated your package listing.  However, it is relatively harmless
+    to do, just in case.)
+
+
+
+<p><h3><font class=ms>alpine</font></font></h3>
+
+<pre>
+  apk update
+  apk add aws-cli
+</pre>
+
+<p>NOTE:
+<br>This works on the <font class=ms>alpine</font> container, but I've never
+    tested an <font class=ms>alpine</font> VM.  I would guess that a
+    <font class=ms>sudo</font> prefix might be required on a VM.
+
+
+
+<p><h3>GCE (Google Compute Engine)
+       <br>Docker</h3>
+
+<p>
+For VMs (such as GCE) or Docker, see the OS-specific instructions above.
+
+
+
+<p><h3>Other</h3>
+
+<a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">hlttps://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html</a>
+
+
+
+<hr>
+
+<p><h2>Configuring the CLI</h2></p>
+
+<a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html</a>
+
+
+
+</body>
+</html>
+

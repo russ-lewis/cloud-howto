@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Cloud Services - HOW TOs - AWS EC2 - Instance Metadata</title>
+    <link rel="stylesheet" href="../../css/common.css">
+  </head>
+
+<body>
+
+
+
+<p><h1>What is Instance Metadata?</h1>
+
+<p>
+In EC2, the "instance metadata" is information that can be accessed, from the
+EC2 instance, using HTTPS requests to a private IP address.  You should be
+aware that some (all?) of this data is <b>open to all users running on that
+instance</b>; thus, you just not use it to store private data, if you plan to
+have untrusted users sharing the machine.
+
+<p> TODO:
+<font class=ms>curl http://169.254.169.254/latest/meta-data/iam/security-credentials/</font>
+
+<p> TODO:
+<font class=ms>curl http://169.254.169.254/latest/meta-data/iam/security-credentials/ROLE_NAME</font>
+
+<p> TODO: user data
+
+
+
+</body>
+</html>
+
